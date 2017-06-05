@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Converter</string>
+    <string name="hint_amount">Amount</string>
+    <string name="label_converting_from">Converting from</string>
+    <string name="label_converting_to">-></string>
+    <string name="label_button">Do it!</string>
+</resources>
