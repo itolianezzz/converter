@@ -67,15 +67,6 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     }
 
     @Override
-    protected void onStart() {
-        super.onStart();
-        prefs = getSharedPreferences(APP_PREFERENCES, MODE_PRIVATE);
-        if (!prefs.getBoolean(PREF_DATA_LOADED, false)) {
-            //TODO progressbar on first load
-        }
-    }
-
-    @Override
     protected void onPause() {
         super.onPause();
 

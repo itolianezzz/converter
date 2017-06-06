@@ -7,24 +7,18 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.Toast;
 
-import org.simpleframework.xml.Serializer;
-import org.simpleframework.xml.core.Persister;
-
-import java.io.BufferedReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
+import ru.spb.itolia.converter.R;
+import ru.spb.itolia.converter.model.ValCursContract.ValuteEntry;
 import ru.spb.itolia.converter.model.beans.ValCurs;
 import ru.spb.itolia.converter.model.beans.ValCursDbHelper;
 import ru.spb.itolia.converter.model.beans.Valute;
-import ru.spb.itolia.converter.model.ValCursContract.ValuteEntry;
 import ru.spb.itolia.converter.view.MainActivity;
 
 /**
  * Created by itolianezzz on 06.06.2017.
  */
 
-public class GetValCursTask extends AsyncTask<Void, Void, ValCurs> {
+public class GetValCursTask extends AsyncTask<Void, Void, Boolean> {
     private MainActivity activity;
     private ValCurs valCurs;
 
@@ -33,7 +27,7 @@ public class GetValCursTask extends AsyncTask<Void, Void, ValCurs> {
     }
 
     @Override
-    protected ValCurs doInBackground(Void... params) {
+    protected Boolean doInBackground(Void... params) {
         try {
             valCurs = MainModel.getContent("http://www.cbr.ru/scripts/XML_daily.asp");
             ValCursDbHelper dbHelper = new ValCursDbHelper(activity);
@@ -54,19 +48,24 @@ public class GetValCursTask extends AsyncTask<Void, Void, ValCurs> {
                         .putBoolean(MainActivity.PREF_DATA_LOADED, true)
                         .apply();
             }
+            db.close();
 
         } catch (Exception e) {
             Log.e("ValCursTask", "ERROR loading valutes! " + e);
+            return false;
         }
 
-        return valCurs;
+        return true;
     }
 
     @Override
-    protected void onPostExecute(ValCurs result) {
-        super.onPostExecute(result);
-        Toast.makeText(activity, "Valcurs loaded", Toast.LENGTH_SHORT).show();
-        activity.onDataLoaded();
-
+    protected void onPostExecute(Boolean resultOk) {
+        super.onPostExecute(resultOk);
+        if(resultOk) {
+            Toast.makeText(activity, activity.getResources().getText(R.string.valcurs_loaded_popup), Toast.LENGTH_SHORT).show();
+            activity.onDataLoaded();
+        } else {
+            Toast.makeText(activity, activity.getResources().getText(R.string.valcurs_error_popup), Toast.LENGTH_SHORT).show();
+        }
     }
 }

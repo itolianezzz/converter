@@ -6,4 +6,6 @@
     <string name="label_button">Do it!</string>
     <string name="how_much">How much?</string>
     <string name="lbl_result">Result:</string>
+    <string name="valcurs_loaded_popup">Data loaded</string>
+    <string name="valcurs_error_popup">Error loading data!</string>
 </resources>

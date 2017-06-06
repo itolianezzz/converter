@@ -6,4 +6,6 @@
     <string name="label_button">Тыц!</string>
     <string name="how_much">Сколько конвертируем?</string>
     <string name="lbl_result">Получаем результат:</string>
+    <string name="valcurs_loaded_popup">Курсы валют загружены</string>
+    <string name="valcurs_error_popup">Ошибка загрузки данных!</string>
 </resources>
