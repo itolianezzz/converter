@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hint_amount">Количество</string>
-    <string name="label_converting_from">Конвертируем</string>
-    <string name="label_converting_to">-></string>
+    <string name="label_converting_from">Что конвертируем?</string>
+    <string name="label_converting_to">Конвертируем в</string>
     <string name="label_button">Тыц!</string>
+    <string name="how_much">Сколько конвертируем?</string>
+    <string name="lbl_result">Получаем результат:</string>
 </resources>

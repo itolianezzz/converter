@@ -1,7 +1,9 @@
 <resources>
     <string name="app_name">Converter</string>
     <string name="hint_amount">Amount</string>
-    <string name="label_converting_from">Converting from</string>
-    <string name="label_converting_to">-></string>
+    <string name="label_converting_from">What do you want to convert?</string>
+    <string name="label_converting_to">Convert to</string>
     <string name="label_button">Do it!</string>
+    <string name="how_much">How much?</string>
+    <string name="lbl_result">Result:</string>
 </resources>
