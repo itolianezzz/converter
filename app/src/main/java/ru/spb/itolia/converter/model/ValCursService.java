@@ -14,7 +14,7 @@ import ru.spb.itolia.converter.model.beans.Valute;
  * Created by itolia on 05.06.2017.
  */
 
-public class MainModel {
+public class ValCursService {
 
     public static ValCurs getContent(String path) throws Exception {
         HttpURLConnection con = null;
@@ -25,8 +25,7 @@ public class MainModel {
             con.setReadTimeout(10000);
             con.connect();
             Serializer serializer = new Persister();
-            ValCurs example = serializer.read(ValCurs.class, con.getInputStream());
-            return example;
+            return serializer.read(ValCurs.class, con.getInputStream());
         } finally {
             if(con != null){
                 con.disconnect();

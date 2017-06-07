@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">Конвертер валют</string>
     <string name="hint_amount">Количество</string>
     <string name="label_converting_from">Что конвертируем?</string>
     <string name="label_converting_to">Конвертируем в</string>
-    <string name="label_button">Тыц!</string>
+    <string name="label_button">Вжух!</string>
     <string name="how_much">Сколько конвертируем?</string>
     <string name="lbl_result">Получаем результат:</string>
     <string name="valcurs_loaded_popup">Курсы валют загружены</string>
-    <string name="valcurs_error_popup">Ошибка загрузки данных!</string>
+    <string name="valcurs_error_popup">Не удалось загрузить курсы вылют!</string>
+    <string name="enter_amount">Введите сумму!</string>
 </resources>

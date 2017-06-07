@@ -1,11 +1,13 @@
 package ru.spb.itolia.converter.model.beans;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import ru.spb.itolia.converter.model.ValCursContract.ValuteEntry;
+import ru.spb.itolia.converter.view.MainActivity;
 
 /**
  * Created by itolianezzz on 06.06.2017.
@@ -50,6 +52,29 @@ public class ValCursDbHelper extends SQLiteOpenHelper {
 
     public Cursor getValutes() {
         return getWritableDatabase().query(ValuteEntry.TABLE_NAME, new String[]{ValuteEntry._ID, ValuteEntry.COLUMN_NAME_NAME, ValuteEntry.COLUMN_NAME_CHARCODE, ValuteEntry.COLUMN_NAME_NOMINAL, ValuteEntry.COLUMN_NAME_VALUE},  null, null, null, null, null);
+    }
+
+    public void clearData(){
+        SQLiteDatabase db = getReadableDatabase();
+        db.execSQL(SQL_DELETE_ENTRIES);
+        onCreate(db);
+        db.close();
+    }
+
+    public void storeData(ValCurs valCurs){
+        SQLiteDatabase db = getWritableDatabase();
+        for(Valute valute: valCurs.getValutes()){
+            ContentValues values = new ContentValues();
+            values.put(ValuteEntry.COLUMN_NAME_ENTRY_ID, valute.getId());
+            values.put(ValuteEntry.COLUMN_NAME_NUMCODE, valute.getNumCode());
+            values.put(ValuteEntry.COLUMN_NAME_CHARCODE, valute.getCharCode());
+            values.put(ValuteEntry.COLUMN_NAME_NOMINAL, valute.getNominal());
+            values.put(ValuteEntry.COLUMN_NAME_NAME, valute.getName());
+            values.put(ValuteEntry.COLUMN_NAME_VALUE, valute.getValue());
+
+            db.insert(ValuteEntry.TABLE_NAME, null, values);
+        }
+        db.close();
     }
 }
 
